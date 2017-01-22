@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+textarea.complaint {
+  vertical-align: middle;
+}

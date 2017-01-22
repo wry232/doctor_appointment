@@ -1,0 +1,47 @@
+<div ng-controller = "appointmentController">
+
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#/home">DocApp</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#/logout">Logout</a></li>
+    </ul>
+  </div>
+
+  <h4>New Appointment</h4>
+  <form name="appointmentForm">
+    <label for="">Date: </label>
+    <input type="date" name="date"
+           ng-model="appointment.date">
+    <br>
+
+    <label for="">Time: </label>
+    <input type="time" name="time"
+          ng-model="appointment.time"
+          class="form-group"
+          required
+          >
+    <br>
+
+    <label for="">Complaint: </label>
+    <textarea class="complaint"
+          name="" id=""
+          cols="30" rows="10"
+          ng-model="appointment.complaint">
+      {{ appointment.complaint }}
+    </textarea>
+    <br>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default"
+              ng-click="goToDashboard()">Cancel</button>
+      <button type="button"
+              class="btn btn-primary"
+              ng-click="createAppointment()"
+              >Submit</button>
+    </div>
+  </form>
+
+</div>

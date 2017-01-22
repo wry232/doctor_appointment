@@ -1,0 +1,50 @@
+<div ng-controller = "dashboardController">
+
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#/home">DocApp</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#/logout" ng-click="logout()">Logout</a></li>
+    </ul>
+  </div>
+
+  <h2>Welcome User: {{user.name}}!</h2>
+
+  <h2>Doctor Appointments</h2>
+
+  <label for="">Search: </label>
+
+  <input type="text"
+      placeholder='name or complaint...'
+      ng-model='searchKey'
+      ng-model-options='{ debounce: 1000 }'
+      ng-change='searchKeyword(searchKey)'>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Patient Name</th>
+        <th>Complain</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="appointment in appointments">
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.time }}</td>
+        <td>{{ appointment.owner }}</td>
+        <td>{{ appointment.complaint }}
+          <button
+            ng-click="cancelAppointment(appointment)"
+            ng-if="ownAppointment(appointment.owner)"
+            >Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" ng-click="goToNewAppointment()">Add New Appointment</button>
+</div>
